@@ -1,17 +1,5 @@
 <template>
-  <div>
-      <h1>
-        mmmmmmmmmmm
-      </h1>
-
-      <input type="radio" name="options" value="True">
-      <label >True</label><br>
-
-      <input type="radio" name="options" value="False">
-      <label >False</label><br>
-
-      <button class = "send" type="button">Send </button>
-  </div>
+  
 </template>
 
 <script>
