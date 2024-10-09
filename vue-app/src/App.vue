@@ -8,8 +8,14 @@
 <script>
 export default{
   name:'App',
+
+  created(){
+    this.axios.get('https:opentdb.com/api.php?amount=1&category=21').then((responce)=>{
+      console.log(responce.data.results[0])
+    })
+  }
 }
-//https://opentdb.com/api.php?amount=1&category=21
+
 </script>
 
 <style lang="scss">
