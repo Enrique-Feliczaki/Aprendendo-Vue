@@ -1,10 +1,16 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+   
   </nav>
   <router-view />
 </template>
+
+<script>
+export default{
+  name:'App',
+}
+//https://opentdb.com/api.php?amount=1&category=21
+</script>
 
 <style lang="scss">
 #app {
@@ -13,7 +19,26 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 60px  auto;
+  max-width: 960px;
+
+  input[type=radio]{
+    margin:12px 4px;
+  }
+
+  button.send{
+    margin-top: 12px;
+    height: 40px;
+    min-width: 120px;
+    padding: 0 16px;
+    color: #fff;
+    background-color: #1867c0;
+    border: 1px solid #1867c0;
+    cursor: pointer;
+  }
+
 }
+
 
 nav {
   padding: 30px;
