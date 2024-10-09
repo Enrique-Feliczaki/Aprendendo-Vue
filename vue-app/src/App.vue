@@ -5,11 +5,15 @@
         <h1 v-html="this.question">
         </h1>
         <template v-for = "(answer, index) in this.answers" :key = "index">
-          <input type="radio" name="options" value="answer">
+          <input :disabled="this.answerSubmitted" type="radio" name="options" :value="answer" v-model="this.chosen_answer">
           <label v-html = "answer"></label><br>
         </template>  
-        <button class = "send" type="button">Send </button>
-
+        <button v-if="!this.answerSubmitted" @click="this.submitAnswer()" class = "send" type="button">Send </button>
+        <section v-if="this.answerSubmitted" class = "result">
+          <h4 v-if="this.chosen_answer == this.correctAnswer">&#9989; Congratulations, the answer "{{this.correctAnswer}}" is correct </h4>
+          <h4 v-else> &#10060; I'm sorry, you picked the worng answer. The correct is "{{ this.correctAnswer }}" </h4>
+          <button class="send" type="button">Next question</button>
+        </section>
         
       </template>
   </div>
@@ -25,7 +29,9 @@ export default{
     return{
       question: undefined,
       incorrectAnswers: undefined,
-      correctAnswer: undefined
+      correctAnswer: undefined,
+      chosen_answer: undefined,
+      answerSubmitted: false
     }
   },    
   computed: {
@@ -36,6 +42,21 @@ export default{
 
     }
   },
+  methods:{
+      
+    submitAnswer(){
+      if(!this.chosen_answer){
+        alert('Pick one of the options');
+      }else{
+        this.answerSubmitted = true;
+        if(this.chosen_answer==this.correctAnswer){
+          
+        }else{
+
+        }
+      }
+    }
+  },    
   created(){
     this.axios.get('https:opentdb.com/api.php?amount=1&category=21').then((responce)=>{
       this.question = responce.data.results[0].question;
